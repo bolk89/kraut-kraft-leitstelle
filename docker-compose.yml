@@ -1,0 +1,12 @@
+services:
+  kraut-kraft-leitstelle:
+    build: .
+    container_name: kraut-kraft-leitstelle
+    restart: unless-stopped
+    environment:
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      # Optional: Zugriff begrenzen (leer = alle privaten Chats):
+      - KRAUT_ALLOWED_CHAT_IDS=${KRAUT_ALLOWED_CHAT_IDS:-}
+      # Optional: Modell (Standard mistral-small-latest):
+      - KRAUT_MODEL=${KRAUT_MODEL:-mistral-small-latest}
